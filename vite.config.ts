@@ -4,6 +4,7 @@ import { configDefaults } from "vitest/config";
 
 export default defineConfig({
   plugins: [react()],
+  // activasmos el entorno de pruebas
   test: {
     globals: true,
     environment: "jsdom",

@@ -1,3 +1,6 @@
+# aca se ponen los comandos para que al ejecutar el comando docker build se construya la imagen de la aplicación
+# Dockerfile para una aplicación Node.js con Nginx
+
 # Etapa 1: build de la aplicación
 FROM node:18-alpine AS builder
 
