@@ -8,12 +8,12 @@ export default function ListaUsuarios({ data }: Props) {
   if (data.length === 0) return <p>No hay datos aún</p>;
 
   return (
-    <ul>
-      {data.map((d, i) => (
-        <li key={i}>
-          {d.nombre} - {d.correo}
-        </li>
-      ))}
-    </ul>
+<ul className="lista-usuarios">
+  {data.map((d, i) => (
+    <li key={i}>
+      {d.nombre} - {d.correo}
+    </li>
+  ))}
+</ul>
   );
 }

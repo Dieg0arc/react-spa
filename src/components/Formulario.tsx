@@ -25,21 +25,10 @@ export default function Formulario({ onSubmit }: Props) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        name="nombre"
-        placeholder="Nombre"
-        value={form.nombre}
-        onChange={handleChange}
-      />
-      <input
-        name="correo"
-        type="email"
-        placeholder="Correo"
-        value={form.correo}
-        onChange={handleChange}
-      />
-      <button type="submit">Agregar</button>
-    </form>
+<form className="formulario" onSubmit={handleSubmit}>
+  <input className="campo" name="nombre" placeholder="Nombre" value={form.nombre} onChange={handleChange} />
+  <input className="campo" name="correo" type="email" placeholder="Correo" value={form.correo} onChange={handleChange} />
+  <button className="boton" type="submit">Agregar</button>
+</form>
   );
 }

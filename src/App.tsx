@@ -12,9 +12,12 @@ function App() {
   };
 
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>Formulario React + Vite + TypeScript</h1>
+    <div className="app-container">
+      <h1 className="titulo">Registrate</h1>
+      <h3 className='descripcion'>ingresa tus datos para entrar a la lista</h3>
       <Formulario onSubmit={agregarDato} />
+      <br />
+      <h3 className='list'>Lista de los resgistrados: </h3>
       <ListaUsuarios data={data} />
     </div>
   );
