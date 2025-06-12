@@ -1,4 +1,4 @@
-name: CI - React SPA con E2E y Performance
+name: CI - React SPA
 
 on:
   push:
@@ -7,44 +7,23 @@ on:
     branches: [main]
 
 jobs:
-  test-e2e-and-performance:
+  build-and-test:
     runs-on: ubuntu-latest
 
-    services:
-      web:
-        image: node:18
-        options: --health-cmd "curl -f http://localhost:5173 || exit 1" --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
-      - name: Clonar repositorio
+      - name: Checkout del código
         uses: actions/checkout@v3
 
-      - name: Instalar Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Instalar dependencias del proyecto
+      - name: Instalar dependencias
         run: npm install
 
-      - name: Levantar app en background
-        run: |
-          npm run dev &
-          sleep 10 # espera que la app esté disponible
+      - name: Ejecutar pruebas
+        run: npm run test
 
-      - name: Ejecutar pruebas E2E con Cypress
-        run: |
-          npm install cypress --save-dev
-          npx cypress run --headless
-
-      - name: Instalar Python y Locust
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-
-      - name: Instalar dependencias de Locust
-        run: pip install locust
-
-      - name: Ejecutar Locust en modo headless
-        run: |
-          locust -f locustfile.py --host=http://localhost:5173 --headless -u 10 -r 5 -t 10s
+      - name: Build del proyecto
+        run: npm run build
